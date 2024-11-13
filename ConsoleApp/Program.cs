@@ -7,7 +7,7 @@ namespace SimpleConsoleApp
         static void Main(string[] args)
         {
             // Call the function to write text to the console
-            WriteToConsole("Hello Petar, this is a message from the console!");
+            WriteToConsole("Hello, this is a message from the console!");
         }
 
         // Function to write text to the console
