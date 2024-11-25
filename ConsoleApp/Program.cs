@@ -13,7 +13,7 @@ class Program
             Console.WriteLine("|01| Lecture 1: Introduction to Automation Testing");
             Console.WriteLine("|02| Lecture 2: Primitive Data Types and Variables");
             Console.WriteLine("|03| Lecture 3: Operators, Conditional Statements, and Loops");
-            Console.WriteLine("|04| Lecture 4: Data Structures and Collections - TBD");
+            Console.WriteLine("|04| Lecture 4: Data Structures and Collections");
             Console.WriteLine("|05| Lecture 5: Methods in C#: Fundamentals and Best Practices - TBD");
             Console.WriteLine("|06| Lecture 6: Applying Basic C# Knowledge - TBD");
             Console.WriteLine("|07| Lecture 7: Classes and Exceptions in C# - TBD");
@@ -36,6 +36,7 @@ class Program
                     Lecture3.Run();
                     break;
                 case "4":
+                    Lecture4.Run();
                     break;
                 case "5":
                     break;

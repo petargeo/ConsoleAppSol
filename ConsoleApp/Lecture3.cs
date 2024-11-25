@@ -56,9 +56,9 @@ internal class Lecture3
                     Console.WriteLine("Invalid choice. Please select a valid option.");
                     break;
             }
-
+            
             Console.WriteLine("\nPress any key to return to the Lecture3 task selector menu...");
-            Console.ReadKey(); // Pause before returning to the menu
+            Console.ReadKey(true); // Pause before returning to the menu
         }
     }
 
@@ -99,7 +99,7 @@ internal class Lecture3
             Console.WriteLine("1. Premiere – premiere screening (12.00 BGN)");
             Console.WriteLine("2. Normal – standard screening (7.50 BGN)");
             Console.WriteLine("3. Discount – screenings for children, students, and pupils (5.00 BGN)");
-            Console.WriteLine("\nEnter the screening type (Premiere, Normal, Discount)");
+            Console.WriteLine("\nEnter the screening type (Premiere, Normal, Discount):");
             string input = Console.ReadLine()?.Trim();
 
             if (input.Equals("Premiere", StringComparison.OrdinalIgnoreCase) ||
@@ -156,13 +156,13 @@ internal class Lecture3
 
         // Prompt user for group budget
         Console.WriteLine("Budget range: 1 to 8000 BGN");
-        int groupbudget = GetBudgetInteger("\nEnter the group budget:");
+        int groupbudget = GetBudgetInteger("\nEnter the group budget: ");
 
         // Prompt user for season
         string season = GetSeason();
 
         // Prompt user for number of fishermen
-        int fishermen = GetFishermenInteger("\nEnter the number of fishermen (between 4 and 18):");
+        int fishermen = GetFishermenInteger("\nEnter the number of fishermen (between 4 and 18): ");
 
         // Calculates whether the fishermen can gather enough money"
 
@@ -197,7 +197,7 @@ internal class Lecture3
     {
         while (true)
         {
-            Console.WriteLine(prompt);
+            Console.Write(prompt);
             string input = Console.ReadLine();
 
             if (int.TryParse(input, out int budget) && budget >= 1 && budget <= 8000)
@@ -218,7 +218,7 @@ internal class Lecture3
             Console.WriteLine("2. Summer boat price (4200.00 BGN)");
             Console.WriteLine("3. Autumn boat prices (4200.00 BGN)");
             Console.WriteLine("4. Winter boat price (2600.00 BGN)");
-            Console.WriteLine("\nEnter the season (Spring, Summer, Autumn, Winter)");
+            Console.Write("\nEnter the season (Spring, Summer, Autumn, Winter): ");
             string input = Console.ReadLine()?.Trim();
 
             if (input.Equals("Spring", StringComparison.OrdinalIgnoreCase) ||
@@ -239,7 +239,7 @@ internal class Lecture3
     {
         while (true)
         {
-            Console.WriteLine(prompt);
+            Console.Write(prompt);
             string input = Console.ReadLine();
 
             if (int.TryParse(input, out int fishermen) && fishermen >= 4 && fishermen <= 18)
@@ -279,8 +279,6 @@ internal class Lecture3
                 return 0.15;
             case <= 18: // 12 to 18 people
                 return 0.25;
-            //case "winter":
-            //    return 2600.00;
             default:
                 throw new ArgumentException("Invalid interger.");
         }
@@ -305,19 +303,19 @@ internal class Lecture3
         Console.WriteLine("------------------------");
 
         // Read number of open tabs in the browser
-        Console.WriteLine("Stay away of facebook, instagram, reddit in your open tabs or else... :");
+        Console.WriteLine("\nStay away of facebook, instagram, reddit in your open tabs or else... :");
 
         // Read number of open tabs in the browser
         Console.WriteLine("\nNumber of open tabs range: 1 to 10:");
-        int n = GetOpenTabs("\nEnter the number of tabs:");
+        int n = GetOpenTabs("\nEnter the number of tabs: ");
 
         Console.WriteLine("\nEnter your salary range: 700 to 1500 BGN");
-        int salary = GetSalary("\nEnter your salary:");
+        int salary = GetSalary("\nEnter your salary: ");
 
         // Iterate through the websites and apply fines
         for (int i = 0; i < n; i++)
         {
-            Console.WriteLine($"\nEnter the name of website {i + 1}:");
+            Console.Write($"\nEnter the name of website {i + 1}: ");
             string website = Console.ReadLine()?.Trim();
 
             switch (website.ToLower())
@@ -352,7 +350,7 @@ internal class Lecture3
     {
         while (true)
         {
-            Console.WriteLine(prompt);
+            Console.Write(prompt);
             string input = Console.ReadLine();
 
             if (int.TryParse(input, out int opentabs) && opentabs >= 1 && opentabs <= 10)
@@ -368,7 +366,7 @@ internal class Lecture3
     {
         while (true)
         {
-            Console.WriteLine(prompt);
+            Console.Write(prompt);
             string input = Console.ReadLine();
 
             if (int.TryParse(input, out int salary) && salary >= 700 && salary <= 1500)
@@ -395,15 +393,15 @@ internal class Lecture3
         while (totalSteps < goalSteps)
         {
             Console.WriteLine($"\nGoing out for walk count: {i + 1}");
-            Console.WriteLine("Enter the number of steps, or type 'Going home' if you're heading home:");
+            Console.Write("Enter the number of steps, or type 'Going home' if you're heading home: ");
             string input = Console.ReadLine()?.Trim();
 
-            if (IsValidInputSteps(input)) // Call Check valid input for cake task
+            if (IsValidInputSteps(input)) // Call Check valid input for steps task
             {
 
                 if (input.Equals("Going home", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("\nEnter the number of steps you took on your way home:");
+                    Console.Write("\nEnter the number of steps you took on your way home: ");
                     int homeSteps = int.Parse(Console.ReadLine());
                     totalSteps += homeSteps;
                     break; // Exit the loop after heading home
@@ -443,7 +441,7 @@ internal class Lecture3
         }
 
         // Check if input is a positive integer
-        if (int.TryParse(input, out int number) && number > 0)
+        else if (int.TryParse(input, out int number) && number > 0)
         {
             return true;
         }
@@ -461,13 +459,13 @@ internal class Lecture3
         // Prompt the user for cake dimensions and calculate the cake pieces
         Console.Write("\nCake dimension is based on length and width that each ranges from 1 to 1000.");
         Console.WriteLine("\n");
-        int cakeLength = GetCakeLength("Enter the cake length:");
+        int cakeLength = GetCakeLength("Enter the cake length: ");
 
         static int GetCakeLength(string prompt)
         {
             while (true)
             {
-                Console.WriteLine(prompt);
+                Console.Write(prompt);
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out int cakeLength) && cakeLength >= 1 && cakeLength <= 1000)
@@ -480,13 +478,13 @@ internal class Lecture3
         }
 
         //Console.Write("Enter the cake width range: 1 to 1000 ");
-        int cakeWidth = GetCakeWidth("Enter the cake width:");
+        int cakeWidth = GetCakeWidth("Enter the cake width: ");
         
         static int GetCakeWidth(string prompt)
         {
             while (true)
             {
-                Console.WriteLine(prompt);
+                Console.Write(prompt);
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out int cakeWidth) && cakeWidth >= 1 && cakeWidth <= 1000)
@@ -507,7 +505,7 @@ internal class Lecture3
         while (piecesTaken < totalCakePieces)
         {
             Console.WriteLine($"\nGuest {i + 1}:");
-            Console.WriteLine("Enter the number of pieces, or type 'Stop' if you're done:");
+            Console.Write("Enter the number of pieces, or type 'Stop' if you're done: ");
             string input = Console.ReadLine()?.Trim();
 
             if (IsValidInputCake(input)) // Call Check valid input for cake task
@@ -536,6 +534,10 @@ internal class Lecture3
         if (piecesTaken > totalCakePieces)
         {
             Console.WriteLine($"\nNo more cake left! You need {piecesTaken - totalCakePieces} pieces more.");
+        }
+        else if (piecesTaken == totalCakePieces)
+        {
+            Console.WriteLine($"\nNo more cake left!");
         }
 
     }
@@ -566,8 +568,8 @@ internal class Lecture3
 
         // Prompt user for integers
         Console.WriteLine("\nEnter integers range: 1 to 9");
-        int n = GetNInteger("Enter the first integer:");
-        int l = GetNInteger("Enter the second integer:");
+        int n = GetAInteger("Enter the first integer: ");
+        int l = GetAInteger("Enter the second integer: ");
 
         //Console.WriteLine("Enter an integer n (1 ≤ n ≤ 9):");
 
@@ -604,11 +606,11 @@ internal class Lecture3
         }
     }
 
-    static int GetNInteger(string prompt)
+    static int GetAInteger(string prompt)
     {
         while (true)
         {
-            Console.WriteLine(prompt);
+            Console.Write(prompt);
             string input = Console.ReadLine();
 
             if (int.TryParse(input, out int j) && j >= 1 && j <= 9)

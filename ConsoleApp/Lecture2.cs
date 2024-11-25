@@ -201,7 +201,7 @@ internal class Lecture2
         else
         {
             // If TryParse fails, display an error message
-            Console.WriteLine("Invalid age entered.");
+            Console.WriteLine("Please enter your age as integer.");
         }
     }
 }
