@@ -173,6 +173,7 @@ internal class Lecture2
     }
     static void Task5()
     {
+        int age;
         Console.WriteLine();
         Console.WriteLine("Task 5: Validate Age Input");
         Console.WriteLine("--------------------------");
@@ -182,7 +183,7 @@ internal class Lecture2
         string userInput = Console.ReadLine();
 
         // Use TryParse to check if the input is a valid integer
-        if (int.TryParse(userInput, out int age))
+        if (int.TryParse(userInput, out age))
         {
             // Check conditions based on the age
             if (age < 0)

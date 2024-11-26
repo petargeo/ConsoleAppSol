@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Data;
@@ -52,10 +53,10 @@ internal class Lecture4
                     Task6();
                     break;
                 case "7":
-                    Task5();
+                    Task7();
                     break;
                 case "8":
-                    Task6();
+                    Task8();
                     break;
                 case "9":
                     Console.WriteLine("\nThanks for reviewing!");
@@ -523,14 +524,292 @@ internal class Lecture4
     {
         Console.WriteLine();
         Console.WriteLine("Task 7: Basic Stack Operations");
-        Console.WriteLine("-------------------");
+        Console.WriteLine("------------------------------");
+
+        Console.WriteLine("\nEnter three integers in the following order:");
+        Console.WriteLine("First integer is the elements to push.");
+        Console.WriteLine("Second integer is the elements to pop.");
+        Console.WriteLine("Third integer is the element to loock for.");
+        string[] elements = null; // Declare the array outside the loop
+
+        while (true)
+        {
+            Console.Write("\nEnter exactly three positive integers separated by spaces: ");
+
+            // Read input from the user
+            string input = Console.ReadLine();
+            elements = input.Split(' ', StringSplitOptions.RemoveEmptyEntries); ;
+
+            // Validate that the array contains exactly 3 elements
+            if (elements.Length != 3)
+            {
+                Console.WriteLine("Error: Please enter exactly three values.");
+                continue;
+            }
+
+            // Validate that all elements are positive integers
+            bool isValid = true;
+            foreach (string element in elements)
+            {
+                if (!int.TryParse(element, out int number) || number <= 0)
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (!isValid)
+            {
+                Console.WriteLine("Error: All values must be positive integers.");
+                continue;
+            }
+
+            // If validation passes, print the array elements
+            Console.WriteLine("Debug: You entered valid positive integers:");
+            foreach (string element in elements)
+            {
+                Console.WriteLine(element);
+            }
+
+            // Exit the loop after successful input
+            break;
+        }
+
+        // Input format: N, S, X
+        int toBePushN = int.Parse(elements[0]); // Number of elements to push
+        int toBePopS = int.Parse(elements[1]); // Number of elements to pop
+        int toLookX = int.Parse(elements[2]); // Element to look for
+        Console.WriteLine($"Based on your input number of elements to push is {toBePushN}, pop is {toBePopS}, and the element to look for is {toLookX}:");
+
+        // Input for stack elements and its validations
+        string[] pushElements = null; // Validation needed for 0 and integers
+
+        while (true)
+        {
+            Console.Write($"\nEnter {toBePushN} elements to push separated by spaces: ");
+
+            // Read input from the user
+            string input = Console.ReadLine();
+            pushElements = input.Split(' ', StringSplitOptions.RemoveEmptyEntries); ;
+
+            // Validate that the array contains exactly 3 elements
+            if (pushElements.Length != toBePushN)
+            {
+                Console.WriteLine($"Error: Please enter exactly {toBePushN} integers.");
+                continue;
+            }
+
+            // Validate that all elements are positive integers
+            bool isValid = true;
+            foreach (string element in pushElements)
+            {
+                if (!int.TryParse(element, out int number) || number <= 0)
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (!isValid)
+            {
+                Console.WriteLine("Error: All values must be positive integers.");
+                continue;
+            }
+
+            // If validation passes, print the array elements
+            Console.WriteLine("Debug: You entered valid positive integers:");
+            foreach (string element in pushElements)
+            {
+                Console.WriteLine(element);
+            }
+
+            break; // Exit the loop after successful input
+        }
+
+
+        // Initialize stack
+        Stack<int> stack = new Stack<int>();
+
+        // Push N elements to the stack
+        for (int i = 0; i < toBePushN && i < pushElements.Length; i++)
+        {
+            stack.Push(int.Parse(pushElements[i]));
+        }
+
+        // Pop S elements from the stack
+        for (int i = 0; i < toBePopS && stack.Count > 0; i++)
+        {
+            stack.Pop();
+        }
+
+        // Print the stack elements before the check
+        Console.WriteLine("\nDebug: Print the stack elements before the check:");
+        foreach (int element in stack)
+        {
+            Console.WriteLine(element);
+        }
+
+        // Check for X in the stack
+        Console.WriteLine("\nPrint 'true' if found, the smallest element if not or '0' if the stack is empty:");
+        if (stack.Contains(toLookX))
+        {
+            Console.WriteLine("true");
+        }
+        else if (stack.Count > 0)
+        { 
+            Console.WriteLine(stack.Min()); // Print the smallest element in the stack
+        }
+        else
+        {
+            Console.WriteLine(0); // If stack is empty
+        }
+
 
     }
     static void Task8()
     {
         Console.WriteLine();
         Console.WriteLine("Task 8: Basic Queue Operations");
-        Console.WriteLine("-------------------");
+        Console.WriteLine("------------------------------");
+
+
+        Console.WriteLine("\nEnter three integers in the following order:");
+        Console.WriteLine("First integer is the elements to enqueue (add).");
+        Console.WriteLine("Second integer is the elements to dequeue (remove).");
+        Console.WriteLine("Third integer is the element to loock for.");
+        string[] elements = null; // Declare the array outside the loop
+
+        while (true)
+        {
+            Console.Write("\nEnter exactly three positive integers separated by spaces: ");
+
+            // Read input from the user
+            string input = Console.ReadLine();
+            elements = input.Split(' ', StringSplitOptions.RemoveEmptyEntries); ;
+
+            // Validate that the array contains exactly 3 elements
+            if (elements.Length != 3)
+            {
+                Console.WriteLine("Error: Please enter exactly three values.");
+                continue;
+            }
+
+            // Validate that all elements are positive integers
+            bool isValid = true;
+            foreach (string element in elements)
+            {
+                if (!int.TryParse(element, out int number) || number <= 0)
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (!isValid)
+            {
+                Console.WriteLine("Error: All values must be positive integers.");
+                continue;
+            }
+
+            // If validation passes, print the array elements
+            Console.WriteLine("Debug: You entered valid positive integers:");
+            foreach (string element in elements)
+            {
+                Console.WriteLine(element);
+            }
+
+            // Exit the loop after successful input
+            break;
+        }
+
+        // Input format: N, S, X
+        int toEnqueueN = int.Parse(elements[0]); // Number of elements to push
+        int toDequeueS = int.Parse(elements[1]); // Number of elements to pop
+        int toLookX = int.Parse(elements[2]); // Element to look for
+        Console.WriteLine($"Based on your input number of elements to enqueue is {toEnqueueN}, dequeue is {toDequeueS}, and the element to look for is {toLookX}:");
+
+        // Input for queue elements and its validations
+        string[] pushElements = null; // Validation needed for 0 and integers
+
+        while (true)
+        {
+            Console.Write($"\nEnter {toEnqueueN} elements to enqueue separated by spaces: ");
+
+            // Read input from the user
+            string input = Console.ReadLine();
+            pushElements = input.Split(' ', StringSplitOptions.RemoveEmptyEntries); ;
+
+            // Validate that the array contains exactly 3 elements
+            if (pushElements.Length != toEnqueueN)
+            {
+                Console.WriteLine($"Error: Please enter exactly {toEnqueueN} integers.");
+                continue;
+            }
+
+            // Validate that all elements are positive integers
+            bool isValid = true;
+            foreach (string element in pushElements)
+            {
+                if (!int.TryParse(element, out int number) || number <= 0)
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (!isValid)
+            {
+                Console.WriteLine("Error: All values must be positive integers.");
+                continue;
+            }
+
+            // If validation passes, print the array elements
+            Console.WriteLine("Debug: You entered valid positive integers:");
+            foreach (string element in pushElements)
+            {
+                Console.WriteLine(element);
+            }
+
+            break; // Exit the loop after successful input
+        }
+
+
+        // Initialize queue
+        Queue<int> intQueue = new Queue<int>();
+
+        // Enqueue N elements to the queue
+        for (int i = 0; i < toEnqueueN && i < pushElements.Length; i++)
+        {
+            intQueue.Enqueue(int.Parse(pushElements[i]));
+        }
+
+        // Dequeue S elements from the queue
+        for (int i = 0; i < toDequeueS && intQueue.Count > 0; i++)
+        {
+            intQueue.Dequeue();
+        }
+
+        // Print the queue elements before the check
+        Console.WriteLine("\nDebug: Print the queue elements before the check:");
+        foreach (int element in intQueue)
+        {
+            Console.WriteLine(element);
+        }
+
+        // Check for X in the queue
+        Console.WriteLine("\nPrint 'true' if found, the smallest element if not or '0' if the stack is empty:");
+        if (intQueue.Contains(toLookX))
+        {
+            Console.WriteLine("true");
+        }
+        else if (intQueue.Count > 0)
+        {
+            Console.WriteLine(intQueue.Min()); // Print the smallest element in the queue
+        }
+        else
+        {
+            Console.WriteLine(0); // If queue is empty
+        }
 
     }
 }
