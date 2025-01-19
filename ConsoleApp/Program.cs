@@ -15,7 +15,7 @@ class Program
             Console.WriteLine("|03| Lecture 3: Operators, Conditional Statements, and Loops");
             Console.WriteLine("|04| Lecture 4: Data Structures and Collections");
             Console.WriteLine("|05| Lecture 5: Methods in C#: Fundamentals and Best Practices");
-            Console.WriteLine("|06| Lecture 6: Applying Basic C# Knowledge - TBD");
+            Console.WriteLine("|06| Lecture 6: Applying Basic C# Knowledge");
             Console.WriteLine("|07| Lecture 7: Classes and Exceptions in C# - TBD");
             Console.WriteLine("|08| Lecture 8: Introduction to OOP: Inheritance and Polymorphism - TBD");
             Console.WriteLine("|09| Lecture 9: OOP: Abstraction, Encapsulation, Interfaces, and Abstract Classe - TBD");
@@ -42,6 +42,7 @@ class Program
                     Lecture5.Run();
                     break;
                 case "6":
+                    Lecture6.Run();
                     break;
                 case "7":
                     break;
